@@ -25,6 +25,57 @@ public class Announcement implements Serializable {
         }
     }
 
+    public void addLink(Link link) {
+        links.add(link);
+    }
 
+    public List<Link> getLinks() {
+        return links;
+    }
 
+    public String getCreatedTime() {
+        return createdTime;
+    }
+
+    public String getCreator() {
+        return creator;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public boolean isExternalFile() {
+        return externalFile;
+    }
+
+    public void setCreatedTime(String createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setLinks(List<Link> links) {
+        this.links = links;
+    }
+
+    public void setExternalFile(boolean externalFile) {
+        this.externalFile = externalFile;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 }
+
+

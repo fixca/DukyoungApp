@@ -23,4 +23,12 @@ public class AnnouncementManager {
     public AnnouncementManager() {
         announcementList = new ArrayList<>();
     }
+
+    public void addInstance(String title, String description, String creator, String createdTime, boolean externalFile) {
+        announcementList.add(new Announcement(title, description, creator, createdTime, externalFile));
+    }
+
+    public void addLink(Announcement announcement, String name, String link) {
+        announcement.addLink(new Link(name, link));
+    }
 }
