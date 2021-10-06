@@ -24,11 +24,13 @@ public class AnnouncementManager {
         announcementList = new ArrayList<>();
     }
 
-    public void addInstance(String title, String description, String creator, String createdTime, boolean externalFile) {
+    public int addInstance(String title, String description, String creator, String createdTime, boolean externalFile) {
         announcementList.add(new Announcement(title, description, creator, createdTime, externalFile));
+        return announcementList.size() - 1;
     }
 
-    public void addLink(Announcement announcement, String name, String link) {
+    public int addLink(Announcement announcement, String name, String link) {
         announcement.addLink(new Link(name, link));
+        return announcement.getLinks().size() - 1;
     }
 }

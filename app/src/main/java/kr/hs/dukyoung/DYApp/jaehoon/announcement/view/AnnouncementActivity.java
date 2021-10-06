@@ -11,11 +11,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListPopupWindow;
 import android.widget.TextView;
 
 import kr.hs.dukyoung.DYApp.jaehoon.R;
 import kr.hs.dukyoung.DYApp.jaehoon.announcement.model.Announcement;
 import kr.hs.dukyoung.DYApp.jaehoon.announcement.model.AnnouncementManager;
+import kr.hs.dukyoung.DYApp.jaehoon.announcement.model.Link;
 
 public class AnnouncementActivity extends AppCompatActivity {
 
@@ -37,25 +41,33 @@ public class AnnouncementActivity extends AppCompatActivity {
         TextView title = findViewById(R.id.announce_title);
         title.setText(announcement.getTitle());
 
+        TextView information = findViewById(R.id.announce_information);
+        information.setText("작성일 : " + announcement.getCreatedTime() + "\n작성자 : " + announcement.getCreator());
+
+        TextView description = findViewById(R.id.announce_description);
+//        StringBuilder sb = new StringBuilder();
+//        for(int i = 0; i < 100; i++) {
+//            sb.append("ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ");
+//        }
+        description.setText(announcement.getDescription());
 
 
 
 
         if(linkAble) {
             fab.setOnClickListener(view -> {
-//                if(manager.getAnnouncementList().isEmpty()) {
-//                    Snackbar.make(view, "첨부파일이 없습니다!", Snackbar.LENGTH_LONG)
-//                            .setAction("Action", null).show();
-//                }
-//                else {
-//
-//                }
-                String linkName = announcement.getLinks().get(0).getName();
-                String link = announcement.getLinks().get(0).getUrl();
-                Snackbar.make(view, "팝업을 띄워야함", Snackbar.LENGTH_LONG).setAction("Action", view1 -> {
+                ListPopupWindow listPopupWindow = new ListPopupWindow(AnnouncementActivity.this);
+                listPopupWindow.setWidth(1300);
+                listPopupWindow.setHeight(800);
+                listPopupWindow.setAdapter(new ArrayAdapter<>(AnnouncementActivity.this, android.R.layout.simple_list_item_1, announcement.getLinksTitle()));
+                listPopupWindow.setModal(true);
+                listPopupWindow.setAnchorView(fab);
+                listPopupWindow.setOnItemClickListener((adapterView, view1, i, l) ->  {
+                    String link = announcement.getLinks().get(i).getUrl();
                     Intent browser = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
                     startActivity(browser);
-                }).show();
+                });
+                listPopupWindow.show();
             });
         }
         else {

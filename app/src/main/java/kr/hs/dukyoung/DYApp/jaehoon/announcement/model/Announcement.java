@@ -1,5 +1,7 @@
 package kr.hs.dukyoung.DYApp.jaehoon.announcement.model;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,12 +27,27 @@ public class Announcement implements Serializable {
         }
     }
 
-    public void addLink(Link link) {
+    @NonNull
+    @Override
+    public String toString() {
+        return this.title;
+    }
+
+    public int addLink(Link link) {
         links.add(link);
+        return links.size() - 1;
     }
 
     public List<Link> getLinks() {
         return links;
+    }
+
+    public List<String> getLinksTitle() {
+        List<String> list = new ArrayList<>();
+        for(Link link : links) {
+            list.add(link.getName());
+        }
+        return list;
     }
 
     public String getCreatedTime() {
