@@ -4,9 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import kr.hs.dukyoung.DYApp.jaehoon.announcement.model.AnnouncementManager;
 import kr.hs.dukyoung.DYApp.jaehoon.announcement.view.AnnouncementActivity;
+import kr.hs.dukyoung.DYApp.jaehoon.schedule.view.ScheduleActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,11 +33,32 @@ public class MainActivity extends AppCompatActivity {
                 //""
                 //
 
+        List<String> activityList = new ArrayList<>();
+        activityList.add("announcement");
+        activityList.add("schedule");
 
-        Intent intent = new Intent(getApplicationContext(), AnnouncementActivity.class);
-        intent.putExtra("linkable", manager.getAnnouncementList().get(index).isExternalFile());
-        intent.putExtra("index", index);
-        startActivity(intent);
+        ListView listView = new ListView(this);
+        listView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, activityList));
+        listView.setOnItemClickListener((adapterView, view, i, l) -> {
+            switch (i) {
+                case 1:
+                    Intent intent = new Intent(getApplicationContext(), AnnouncementActivity.class);
+                    intent.putExtra("linkable", manager.getAnnouncementList().get(index).isExternalFile());
+                    intent.putExtra("index", index);
+                    startActivity(intent);
+                    break;
+                case 2:
+                    Intent intent1 = new Intent(getApplicationContext(), ScheduleActivity.class);
+                    startActivity(intent1);
+                    break;
+                default:
+                    Toast.makeText(MainActivity.this, "Invalid Action!", Toast.LENGTH_LONG).show();
+                    break;
+            }
+        });
+
+
+
 
 //        finish();
     }
