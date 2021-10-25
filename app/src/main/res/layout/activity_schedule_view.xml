@@ -45,7 +45,7 @@
     <GridView
         android:id="@+id/gv_calendar_activity_gv_calendar"
         android:layout_width="407dp"
-        android:layout_height="667dp"
+        android:layout_height="666dp"
         android:listSelector="@drawable/gridview_selector"
         android:numColumns="7"
         android:stretchMode="columnWidth"

@@ -22,6 +22,7 @@ public class CalendarAdapter extends BaseAdapter
     private Context mContext;
     private int mResource;
     private LayoutInflater mLiInflater;
+    private int height;
 
 
     public CalendarAdapter(Context context, int textResource, ArrayList<DayInfo> dayList)
@@ -30,6 +31,12 @@ public class CalendarAdapter extends BaseAdapter
         this.mDayList = dayList;
         this.mResource = textResource;
         this.mLiInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.height = dpToPx(109);
+    }
+
+    public int dpToPx(int dp) {
+        float density = mContext.getResources().getDisplayMetrics().density;
+        return Math.round((float) dp * density);
     }
 
 
@@ -69,11 +76,11 @@ public class CalendarAdapter extends BaseAdapter
 
             if(position % 7 == 6)
             {
-                convertView.setLayoutParams(new GridView.LayoutParams(getCellWidthDP()+getRestCellWidthDP(), getCellHeightDP()));
+                convertView.setLayoutParams(new GridView.LayoutParams(getCellWidthDP()+getRestCellWidthDP(), this.height));
             }
             else
             {
-                convertView.setLayoutParams(new GridView.LayoutParams(getCellWidthDP(), getCellHeightDP()));
+                convertView.setLayoutParams(new GridView.LayoutParams(getCellWidthDP(), this.height));
             }
 
 

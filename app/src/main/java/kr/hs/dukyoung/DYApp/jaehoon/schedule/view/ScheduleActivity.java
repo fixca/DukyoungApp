@@ -175,6 +175,7 @@ public class ScheduleActivity extends AppCompatActivity implements OnClickListen
         }
     }
 
+
     private void initCalendarAdapter()
     {
         mCalendarAdapter = new CalendarAdapter(this, R.layout.day, mDayList);
