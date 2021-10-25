@@ -37,17 +37,17 @@ public class MainActivity extends AppCompatActivity {
         activityList.add("announcement");
         activityList.add("schedule");
 
-        ListView listView = new ListView(this);
-        listView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, activityList));
+        ListView listView = findViewById(R.id.main_listview);
+        listView.setAdapter(new ArrayAdapter(this, android.R.layout.simple_list_item_1, activityList));
         listView.setOnItemClickListener((adapterView, view, i, l) -> {
             switch (i) {
-                case 1:
+                case 0:
                     Intent intent = new Intent(getApplicationContext(), AnnouncementActivity.class);
                     intent.putExtra("linkable", manager.getAnnouncementList().get(index).isExternalFile());
                     intent.putExtra("index", index);
                     startActivity(intent);
                     break;
-                case 2:
+                case 1:
                     Intent intent1 = new Intent(getApplicationContext(), ScheduleActivity.class);
                     startActivity(intent1);
                     break;

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/day_cell_ll_background"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="47dp"
+    android:layout_height="80dp"
+    android:background="@drawable/bg_day"
+    android:orientation="vertical">
+
+    <!-- 날짜 -->
+    <TextView
+        android:id="@+id/day_cell_tv_day"
+        android:layout_width="match_parent"
+        android:layout_height="13dp"
+        android:gravity="left|top"
+        android:paddingLeft="3dp"
+        android:paddingTop="2dp"
+        android:textSize="10dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="TextView" />
+    <!-- /날짜 -->
+
+</LinearLayout>
