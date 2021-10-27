@@ -1,6 +1,6 @@
 package kr.hs.dukyoung.DYApp.jaehoon.announcement.model;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class AnnouncementManager {
@@ -8,6 +8,10 @@ public class AnnouncementManager {
     private static AnnouncementManager instance = null;
 
     private List<Announcement> announcementList;
+
+    private AnnouncementManager() {
+        announcementList = new LinkedList<>();
+    }
 
     public static AnnouncementManager getInstance() {
         if(instance == null) {
@@ -18,10 +22,6 @@ public class AnnouncementManager {
 
     public List<Announcement> getAnnouncementList() {
         return announcementList;
-    }
-
-    public AnnouncementManager() {
-        announcementList = new ArrayList<>();
     }
 
     public int addInstance(String title, String description, String creator, String createdTime, boolean externalFile) {

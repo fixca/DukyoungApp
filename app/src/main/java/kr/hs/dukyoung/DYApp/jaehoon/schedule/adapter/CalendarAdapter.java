@@ -13,7 +13,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import kr.hs.dukyoung.DYApp.jaehoon.R;
-import kr.hs.dukyoung.DYApp.jaehoon.schedule.model.DayInfo;
+import kr.hs.dukyoung.DYApp.jaehoon.schedule.model.calender.DayInfo;
+import kr.hs.dukyoung.DYApp.jaehoon.schedule.model.schedule.Schedule;
+import kr.hs.dukyoung.DYApp.jaehoon.schedule.model.schedule.ScheduleManager;
 
 public class CalendarAdapter extends BaseAdapter
 {
@@ -23,10 +25,12 @@ public class CalendarAdapter extends BaseAdapter
     private int mResource;
     private LayoutInflater mLiInflater;
     private int height;
+    private int month;
 
 
-    public CalendarAdapter(Context context, int textResource, ArrayList<DayInfo> dayList)
+    public CalendarAdapter(Context context, int textResource, ArrayList<DayInfo> dayList, int month)
     {
+        this.month = month;
         this.mContext = context;
         this.mDayList = dayList;
         this.mResource = textResource;
@@ -67,6 +71,7 @@ public class CalendarAdapter extends BaseAdapter
     public View getView(int position, View convertView, ViewGroup parent)
     {
         DayInfo day = mDayList.get(position);
+        Schedule schedule = ScheduleManager.getInstance().getScheduleByDay(Integer.parseInt(day.getDay()));
 
         DayViewHolde dayViewHolder;
 
@@ -88,6 +93,7 @@ public class CalendarAdapter extends BaseAdapter
 
             dayViewHolder.llBackground = (LinearLayout)convertView.findViewById(R.id.day_cell_ll_background);
             dayViewHolder.tvDay = (TextView) convertView.findViewById(R.id.day_cell_tv_day);
+            dayViewHolder.schedule = (TextView) convertView.findViewById(R.id.day_schedule);
 
             convertView.setTag(dayViewHolder);
         }
@@ -114,6 +120,18 @@ public class CalendarAdapter extends BaseAdapter
                 {
                     dayViewHolder.tvDay.setTextColor(Color.BLACK);
                 }
+
+                if(schedule != null) {
+                    if(schedule.getMonth() == month) {
+                        dayViewHolder.schedule.setText(schedule.getSchedule());
+                    }
+                    else {
+                        dayViewHolder.schedule.setText("일정이 없네잉");
+                    }
+                }
+                else {
+                    dayViewHolder.schedule.setText("일정이 없네잉");
+                }
             }
             else
             {
@@ -129,7 +147,7 @@ public class CalendarAdapter extends BaseAdapter
     {
         public LinearLayout llBackground;
         public TextView tvDay;
-
+        public TextView schedule;
     }
 
     private int getCellWidthDP()

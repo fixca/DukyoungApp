@@ -1,4 +1,4 @@
-package kr.hs.dukyoung.DYApp.jaehoon.schedule.model;
+package kr.hs.dukyoung.DYApp.jaehoon.schedule.model.calender;
 
 public class DayInfo
 {

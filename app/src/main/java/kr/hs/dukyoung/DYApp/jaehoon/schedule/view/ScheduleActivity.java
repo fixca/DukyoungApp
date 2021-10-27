@@ -11,24 +11,24 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 
 import kr.hs.dukyoung.DYApp.jaehoon.R;
 import kr.hs.dukyoung.DYApp.jaehoon.schedule.adapter.CalendarAdapter;
-import kr.hs.dukyoung.DYApp.jaehoon.schedule.model.DayInfo;
+import kr.hs.dukyoung.DYApp.jaehoon.schedule.model.calender.DayInfo;
+import kr.hs.dukyoung.DYApp.jaehoon.schedule.model.schedule.ScheduleManager;
 
 public class ScheduleActivity extends AppCompatActivity implements OnClickListener, OnItemClickListener {
 
-    public static int SUNDAY 		= 1;
-    public static int MONDAY 		= 2;
-    public static int TUESDAY 		= 3;
-    public static int WEDNSESDAY 	= 4;
-    public static int THURSDAY 		= 5;
-    public static int FRIDAY 		= 6;
-    public static int SATURDAY 		= 7;
+    public static int SUNDAY = 1;
+    public static int MONDAY = 2;
+    public static int TUESDAY = 3;
+    public static int WEDNSESDAY = 4;
+    public static int THURSDAY = 5;
+    public static int FRIDAY = 6;
+    public static int SATURDAY = 7;
 
     private TextView mTvCalendarTitle;
     private GridView mGvCalendar;
@@ -57,7 +57,7 @@ public class ScheduleActivity extends AppCompatActivity implements OnClickListen
         bNextMonth.setOnClickListener(this);
         mGvCalendar.setOnItemClickListener(this);
 
-        mDayList = new ArrayList<DayInfo>();
+        mDayList = new ArrayList<>();
     }
 
 
@@ -65,7 +65,7 @@ public class ScheduleActivity extends AppCompatActivity implements OnClickListen
     protected void onResume()
     {
         super.onResume();
-
+        ScheduleManager.getInstance().addInstance(10, 27, "1&3학년 등교, 2학년 온라인 수업, 북트레일러 경연, 기초학력 2차 향상도평가, 교육과정 박람회");
         mThisMonthCalendar = Calendar.getInstance();
         mThisMonthCalendar.set(Calendar.DAY_OF_MONTH, 1);
         getCalendar(mThisMonthCalendar);
@@ -178,7 +178,7 @@ public class ScheduleActivity extends AppCompatActivity implements OnClickListen
 
     private void initCalendarAdapter()
     {
-        mCalendarAdapter = new CalendarAdapter(this, R.layout.day, mDayList);
+        mCalendarAdapter = new CalendarAdapter(this, R.layout.day, mDayList, mThisMonthCalendar.get(Calendar.MONTH) + 1);
         mGvCalendar.setAdapter(mCalendarAdapter);
     }
 }
