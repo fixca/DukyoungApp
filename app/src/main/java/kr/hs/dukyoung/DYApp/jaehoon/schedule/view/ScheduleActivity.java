@@ -11,6 +11,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -18,6 +19,7 @@ import java.util.Calendar;
 import kr.hs.dukyoung.DYApp.jaehoon.R;
 import kr.hs.dukyoung.DYApp.jaehoon.schedule.adapter.CalendarAdapter;
 import kr.hs.dukyoung.DYApp.jaehoon.schedule.model.calender.DayInfo;
+import kr.hs.dukyoung.DYApp.jaehoon.schedule.model.schedule.Schedule;
 import kr.hs.dukyoung.DYApp.jaehoon.schedule.model.schedule.ScheduleManager;
 
 public class ScheduleActivity extends AppCompatActivity implements OnClickListener, OnItemClickListener {
@@ -156,7 +158,19 @@ public class ScheduleActivity extends AppCompatActivity implements OnClickListen
     @Override
     public void onItemClick(AdapterView<?> parent, View v, int position, long arg3)
     {
-
+        DayInfo day = (DayInfo) mCalendarAdapter.getItem(position);
+        Schedule schedule = ScheduleManager.getInstance().getScheduleByDay(Integer.parseInt(day.getDay()));
+        if(schedule == null) {
+            Toast.makeText(this, "일정이 없네잉", Toast.LENGTH_LONG).show();
+        }
+        else {
+            if(schedule.getMonth() != mThisMonthCalendar.get(Calendar.MONTH) + 1) {
+                Toast.makeText(this, "일정이 없네잉", Toast.LENGTH_LONG).show();
+            }
+            else {
+                Toast.makeText(this, schedule.getSchedule(), Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
     @Override
