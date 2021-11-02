@@ -1,24 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="kr.hs.dukyoung.DYApp.jaehoon">
+    package="kr.hs.dukyoung.DYApp.jaehoon" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
-        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name="kr.hs.dukyoung.DYApp.schedule.view.ScheduleActivity"></activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true" >
+        <activity
+            android:name="kr.hs.dukyoung.DYApp.main.input.view.MainInputActivity"
+            android:exported="false" />
+        <activity
+            android:name="kr.hs.dukyoung.DYApp.main.begin.view.MainBeginActivity"
+            android:exported="false" />
+        <activity
+            android:name="kr.hs.dukyoung.DYApp.timetable.view.TimeTableActivity"
+            android:exported="false" />
+        <activity android:name="kr.hs.dukyoung.DYApp.schedule.view.ScheduleActivity" />
         <activity
             android:name="kr.hs.dukyoung.DYApp.announcement.view.AnnouncementActivity"
             android:label="@string/title_activity_announcement"
-
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="kr.hs.dukyoung.DYApp.MainActivity">
+        <activity android:name="kr.hs.dukyoung.DYApp.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

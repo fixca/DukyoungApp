@@ -15,8 +15,11 @@ import java.util.List;
 import kr.hs.dukyoung.DYApp.announcement.model.AnnouncementManager;
 import kr.hs.dukyoung.DYApp.announcement.view.AnnouncementActivity;
 import kr.hs.dukyoung.DYApp.jaehoon.R;
+import kr.hs.dukyoung.DYApp.main.input.view.MainInputActivity;
 import kr.hs.dukyoung.DYApp.request.Request;
 import kr.hs.dukyoung.DYApp.schedule.view.ScheduleActivity;
+import kr.hs.dukyoung.DYApp.timetable.view.TimeTableActivity;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         List<String> activityList = new ArrayList<>();
         activityList.add("announcement");
         activityList.add("schedule");
+        activityList.add("timetable");
+        activityList.add("maininputactivity");
 
         ListView listView = findViewById(R.id.main_listview);
         listView.setAdapter(new ArrayAdapter(this, android.R.layout.simple_list_item_1, activityList));
@@ -71,6 +76,15 @@ public class MainActivity extends AppCompatActivity {
                     });
                     request.execute();
                     break;
+                case 2:
+                    Intent intent2 = new Intent(this, TimeTableActivity.class);
+                    startActivity(intent2);
+                    break;
+                case 3:
+                    Intent intent3 = new Intent(this, MainInputActivity.class);
+                    startActivity(intent3);
+                    break;
+
                 default:
                     Toast.makeText(MainActivity.this, "Invalid Action!", Toast.LENGTH_LONG).show();
                     break;

@@ -5,9 +5,13 @@
       <map>
         <entry key="..\:/Users/fixca/Desktop/kingdroid_studio/schoolapp/app/src/main/res/drawable/gridview_selector.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/fixca/Desktop/kingdroid_studio/schoolapp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/fixca/Desktop/kingdroid_studio/schoolapp/app/src/main/res/layout/activity_main_begin.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/fixca/Desktop/kingdroid_studio/schoolapp/app/src/main/res/layout/activity_main_input.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/fixca/Desktop/kingdroid_studio/schoolapp/app/src/main/res/layout/activity_schedule_view.xml" value="0.2246376811594203" />
+        <entry key="..\:/Users/fixca/Desktop/kingdroid_studio/schoolapp/app/src/main/res/layout/activity_time_table.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/fixca/Desktop/kingdroid_studio/schoolapp/app/src/main/res/layout/day.xml" value="0.1" />
         <entry key="..\:/Users/fixca/Desktop/kingdroid_studio/schoolapp/app/src/main/res/layout/schedule_popup.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/fixca/Desktop/kingdroid_studio/schoolapp/app/src/main/res/layout/timetable_index.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>
