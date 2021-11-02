@@ -1,4 +1,4 @@
-package kr.hs.dukyoung.DYApp.jaehoon.announcement.model;
+package kr.hs.dukyoung.DYApp.announcement.model;
 
 import androidx.annotation.NonNull;
 

@@ -1,4 +1,4 @@
-package kr.hs.dukyoung.DYApp.jaehoon.schedule.adapter;
+package kr.hs.dukyoung.DYApp.schedule.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -13,10 +13,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import kr.hs.dukyoung.DYApp.jaehoon.R;
-import kr.hs.dukyoung.DYApp.jaehoon.schedule.model.calender.DayInfo;
-import kr.hs.dukyoung.DYApp.jaehoon.schedule.model.schedule.Schedule;
-import kr.hs.dukyoung.DYApp.jaehoon.schedule.model.schedule.ScheduleManager;
-import kr.hs.dukyoung.DYApp.jaehoon.utils.LayoutUtils;
+import kr.hs.dukyoung.DYApp.schedule.model.calender.DayInfo;
+import kr.hs.dukyoung.DYApp.schedule.model.schedule.Schedule;
+import kr.hs.dukyoung.DYApp.schedule.model.schedule.ScheduleManager;
+import kr.hs.dukyoung.DYApp.utils.LayoutUtils;
 
 public class CalendarAdapter extends BaseAdapter
 {

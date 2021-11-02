@@ -1,4 +1,4 @@
-package kr.hs.dukyoung.DYApp.jaehoon.schedule.model.schedule;
+package kr.hs.dukyoung.DYApp.schedule.model.schedule;
 
 import java.util.HashMap;
 

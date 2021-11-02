@@ -1,25 +1,21 @@
-package kr.hs.dukyoung.DYApp.jaehoon.announcement.view;
+package kr.hs.dukyoung.DYApp.announcement.view;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListPopupWindow;
 import android.widget.TextView;
 
+import kr.hs.dukyoung.DYApp.announcement.model.AnnouncementManager;
 import kr.hs.dukyoung.DYApp.jaehoon.R;
-import kr.hs.dukyoung.DYApp.jaehoon.announcement.model.Announcement;
-import kr.hs.dukyoung.DYApp.jaehoon.announcement.model.AnnouncementManager;
-import kr.hs.dukyoung.DYApp.jaehoon.announcement.model.Link;
+import kr.hs.dukyoung.DYApp.announcement.model.Announcement;
 
 public class AnnouncementActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package kr.hs.dukyoung.DYApp.jaehoon.request;
+package kr.hs.dukyoung.DYApp.request;
 
 public interface IOnProgressUpdate {
     void onProgressUpdate();

@@ -1,4 +1,4 @@
-package kr.hs.dukyoung.DYApp.jaehoon;
+package kr.hs.dukyoung.DYApp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,17 +8,15 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import kr.hs.dukyoung.DYApp.jaehoon.announcement.model.AnnouncementManager;
-import kr.hs.dukyoung.DYApp.jaehoon.announcement.view.AnnouncementActivity;
-import kr.hs.dukyoung.DYApp.jaehoon.request.Request;
-import kr.hs.dukyoung.DYApp.jaehoon.request.URLRequest;
-import kr.hs.dukyoung.DYApp.jaehoon.schedule.view.ScheduleActivity;
+import kr.hs.dukyoung.DYApp.announcement.model.AnnouncementManager;
+import kr.hs.dukyoung.DYApp.announcement.view.AnnouncementActivity;
+import kr.hs.dukyoung.DYApp.jaehoon.R;
+import kr.hs.dukyoung.DYApp.request.Request;
+import kr.hs.dukyoung.DYApp.schedule.view.ScheduleActivity;
 
 public class MainActivity extends AppCompatActivity {
 

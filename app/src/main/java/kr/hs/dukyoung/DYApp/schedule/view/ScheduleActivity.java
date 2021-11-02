@@ -1,12 +1,10 @@
-package kr.hs.dukyoung.DYApp.jaehoon.schedule.view;
+package kr.hs.dukyoung.DYApp.schedule.view;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -28,11 +26,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import kr.hs.dukyoung.DYApp.jaehoon.R;
-import kr.hs.dukyoung.DYApp.jaehoon.schedule.adapter.CalendarAdapter;
-import kr.hs.dukyoung.DYApp.jaehoon.schedule.model.calender.DayInfo;
-import kr.hs.dukyoung.DYApp.jaehoon.schedule.model.schedule.Schedule;
-import kr.hs.dukyoung.DYApp.jaehoon.schedule.model.schedule.ScheduleManager;
-import kr.hs.dukyoung.DYApp.jaehoon.utils.LayoutUtils;
+import kr.hs.dukyoung.DYApp.schedule.adapter.CalendarAdapter;
+import kr.hs.dukyoung.DYApp.schedule.model.calender.DayInfo;
+import kr.hs.dukyoung.DYApp.schedule.model.schedule.Schedule;
+import kr.hs.dukyoung.DYApp.schedule.model.schedule.ScheduleManager;
+import kr.hs.dukyoung.DYApp.utils.LayoutUtils;
 
 public class ScheduleActivity extends AppCompatActivity implements OnClickListener, OnItemClickListener {
 

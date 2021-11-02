@@ -1,4 +1,4 @@
-package kr.hs.dukyoung.DYApp.jaehoon.utils;
+package kr.hs.dukyoung.DYApp.utils;
 
 import android.content.Context;
 
