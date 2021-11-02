@@ -20,7 +20,9 @@ public class ScheduleManager {
     }
 
     public int addInstance(int month, int day, String schedule) {
-        scheduleList.put(day, new Schedule(month, day, schedule));
+        if(!schedule.equals("")) {
+            scheduleList.put(day, new Schedule(month, day, schedule));
+        }
         return day;
     }
 

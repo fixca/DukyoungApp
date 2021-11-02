@@ -1,17 +1,28 @@
 package kr.hs.dukyoung.DYApp.jaehoon.schedule.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -21,6 +32,7 @@ import kr.hs.dukyoung.DYApp.jaehoon.schedule.adapter.CalendarAdapter;
 import kr.hs.dukyoung.DYApp.jaehoon.schedule.model.calender.DayInfo;
 import kr.hs.dukyoung.DYApp.jaehoon.schedule.model.schedule.Schedule;
 import kr.hs.dukyoung.DYApp.jaehoon.schedule.model.schedule.ScheduleManager;
+import kr.hs.dukyoung.DYApp.jaehoon.utils.LayoutUtils;
 
 public class ScheduleActivity extends AppCompatActivity implements OnClickListener, OnItemClickListener {
 
@@ -66,11 +78,28 @@ public class ScheduleActivity extends AppCompatActivity implements OnClickListen
     @Override
     protected void onResume()
     {
-        super.onResume();
-        ScheduleManager.getInstance().addInstance(10, 27, "1&3학년 등교, 2학년 온라인 수업, 북트레일러 경연, 기초학력 2차 향상도평가, 교육과정 박람회");
-        mThisMonthCalendar = Calendar.getInstance();
-        mThisMonthCalendar.set(Calendar.DAY_OF_MONTH, 1);
-        getCalendar(mThisMonthCalendar);
+        try {
+            super.onResume();
+            Intent intent = getIntent();
+            String jsonString = intent.getExtras().getString("jsonString");
+            JSONArray jsonArray = new JSONArray(jsonString);
+            for(int i = 0; i < jsonArray.length(); i++) {
+                StringBuilder sb = new StringBuilder();
+                JSONObject jsonObject = (JSONObject) jsonArray.get(i);
+                JSONArray array = new JSONArray((String) jsonObject.get("eventName"));
+                for(int j = 0; j < array.length(); j++) {
+                    sb.append(array.get(j) + "\n");
+                }
+                ScheduleManager.getInstance().addInstance(Integer.parseInt((String) jsonObject.get("month")), Integer.parseInt((String) jsonObject.get("day")), sb.toString().trim());
+            }
+            mThisMonthCalendar = Calendar.getInstance();
+            mThisMonthCalendar.set(Calendar.DAY_OF_MONTH, 1);
+            getCalendar(mThisMonthCalendar);
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "오류가 발생했습니다!\n인터넷 상태를 재확인 해주신 다음, 앱을 다시 실행해주세요!", Toast.LENGTH_LONG).show();
+        }
     }
 
     private void getCalendar(Calendar calendar)
@@ -168,7 +197,13 @@ public class ScheduleActivity extends AppCompatActivity implements OnClickListen
                 Toast.makeText(this, "일정이 없네잉", Toast.LENGTH_LONG).show();
             }
             else {
-                Toast.makeText(this, schedule.getSchedule(), Toast.LENGTH_LONG).show();
+                LayoutInflater inflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+                PopupWindow window = new PopupWindow(inflater.inflate(R.layout.schedule_popup, null, false), LayoutUtils.dpToPx(ScheduleActivity.this, 313), LayoutUtils.dpToPx(ScheduleActivity.this, 286), true);
+                TextView textView = window.getContentView().findViewById(R.id.schedule_popup_textview);
+                textView.setText(schedule.getSchedule());
+                window.setBackgroundDrawable(new ColorDrawable(Color.GRAY));
+                window.showAtLocation(findViewById(R.id.activity_schedule), Gravity.CENTER, 0, 0);
+//                Toast.makeText(this, schedule.getSchedule(), Toast.LENGTH_LONG).show();
             }
         }
     }

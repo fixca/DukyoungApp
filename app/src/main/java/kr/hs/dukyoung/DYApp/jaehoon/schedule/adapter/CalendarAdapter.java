@@ -16,6 +16,7 @@ import kr.hs.dukyoung.DYApp.jaehoon.R;
 import kr.hs.dukyoung.DYApp.jaehoon.schedule.model.calender.DayInfo;
 import kr.hs.dukyoung.DYApp.jaehoon.schedule.model.schedule.Schedule;
 import kr.hs.dukyoung.DYApp.jaehoon.schedule.model.schedule.ScheduleManager;
+import kr.hs.dukyoung.DYApp.jaehoon.utils.LayoutUtils;
 
 public class CalendarAdapter extends BaseAdapter
 {
@@ -35,13 +36,10 @@ public class CalendarAdapter extends BaseAdapter
         this.mDayList = dayList;
         this.mResource = textResource;
         this.mLiInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        this.height = dpToPx(109);
+        this.height = LayoutUtils.dpToPx(context, 109);
     }
 
-    public int dpToPx(int dp) {
-        float density = mContext.getResources().getDisplayMetrics().density;
-        return Math.round((float) dp * density);
-    }
+
 
 
     @Override
