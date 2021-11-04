@@ -1,4 +1,4 @@
-package kr.hs.dukyoung.DYApp.schedule.view;
+package kr.hs.dukyoung.DYApp.meal.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,13 +26,13 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import kr.hs.dukyoung.DYApp.jaehoon.R;
-import kr.hs.dukyoung.DYApp.schedule.adapter.CalendarAdapter;
-import kr.hs.dukyoung.DYApp.schedule.model.calender.DayInfo;
-import kr.hs.dukyoung.DYApp.schedule.model.schedule.Schedule;
-import kr.hs.dukyoung.DYApp.schedule.model.schedule.ScheduleManager;
+import kr.hs.dukyoung.DYApp.meal.adapter.CalendarAdapter;
+import kr.hs.dukyoung.DYApp.meal.model.calender.DayInfo;
+import kr.hs.dukyoung.DYApp.meal.model.schedule.Schedule;
+import kr.hs.dukyoung.DYApp.meal.model.schedule.ScheduleManager;
 import kr.hs.dukyoung.DYApp.utils.LayoutUtils;
 
-public class ScheduleActivity extends AppCompatActivity implements OnClickListener, OnItemClickListener {
+public class SchoolMealActivity extends AppCompatActivity implements OnClickListener, OnItemClickListener {
 
     public static int SUNDAY = 1;
     public static int MONDAY = 2;
@@ -56,13 +56,13 @@ public class ScheduleActivity extends AppCompatActivity implements OnClickListen
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_schedule_view);
+        setContentView(R.layout.activity_school_meal);
 
-        Button bLastMonth = (Button)findViewById(R.id.gv_calendar_activity_b_last);
-        Button bNextMonth = (Button)findViewById(R.id.gv_calendar_activity_b_next);
+        Button bLastMonth = (Button)findViewById(R.id.meal_gv_calendar_activity_b_last);
+        Button bNextMonth = (Button)findViewById(R.id.meal_gv_calendar_activity_b_next);
 
-        mTvCalendarTitle = (TextView)findViewById(R.id.gv_calendar_activity_tv_title);
-        mGvCalendar = (GridView)findViewById(R.id.gv_calendar_activity_gv_calendar);
+        mTvCalendarTitle = (TextView)findViewById(R.id.meal_gv_calendar_activity_tv_title);
+        mGvCalendar = (GridView)findViewById(R.id.meal_gv_calendar_activity_gv_calendar);
 
 
         bLastMonth.setOnClickListener(this);
@@ -190,19 +190,19 @@ public class ScheduleActivity extends AppCompatActivity implements OnClickListen
         DayInfo day = (DayInfo) mCalendarAdapter.getItem(position);
         Schedule schedule = ScheduleManager.getInstance().getScheduleByDay(Integer.parseInt(day.getDay()));
         if(schedule == null) {
-            Toast.makeText(this, "일정이 없네잉", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "급식이 없네잉", Toast.LENGTH_LONG).show();
         }
         else {
             if(schedule.getMonth() != mThisMonthCalendar.get(Calendar.MONTH) + 1) {
-                Toast.makeText(this, "일정이 없네잉", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "급식이 없네잉", Toast.LENGTH_LONG).show();
             }
             else {
                 LayoutInflater inflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
-                PopupWindow window = new PopupWindow(inflater.inflate(R.layout.schedule_popup, null, false), LayoutUtils.dpToPx(ScheduleActivity.this, 313), LayoutUtils.dpToPx(ScheduleActivity.this, 286), true);
+                PopupWindow window = new PopupWindow(inflater.inflate(R.layout.schedule_popup, null, false), LayoutUtils.dpToPx(SchoolMealActivity.this, 313), LayoutUtils.dpToPx(SchoolMealActivity.this, 286), true);
                 TextView textView = window.getContentView().findViewById(R.id.schedule_popup_textview);
-                textView.setText(schedule.getSchedule());
+                textView.setText(schedule.getMenus());
                 window.setBackgroundDrawable(new ColorDrawable(Color.GRAY));
-                window.showAtLocation(findViewById(R.id.activity_schedule), Gravity.CENTER, 0, 0);
+                window.showAtLocation(findViewById(R.id.activity_school_meal), Gravity.CENTER, 0, 0);
 //                Toast.makeText(this, schedule.getSchedule(), Toast.LENGTH_LONG).show();
             }
         }

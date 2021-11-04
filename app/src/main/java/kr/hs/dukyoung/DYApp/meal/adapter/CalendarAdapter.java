@@ -1,4 +1,4 @@
-package kr.hs.dukyoung.DYApp.schedule.adapter;
+package kr.hs.dukyoung.DYApp.meal.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -13,9 +13,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import kr.hs.dukyoung.DYApp.jaehoon.R;
-import kr.hs.dukyoung.DYApp.schedule.model.calender.DayInfo;
-import kr.hs.dukyoung.DYApp.schedule.model.schedule.Schedule;
-import kr.hs.dukyoung.DYApp.schedule.model.schedule.ScheduleManager;
+import kr.hs.dukyoung.DYApp.meal.model.calender.DayInfo;
+import kr.hs.dukyoung.DYApp.meal.model.schedule.Schedule;
+import kr.hs.dukyoung.DYApp.meal.model.schedule.ScheduleManager;
 import kr.hs.dukyoung.DYApp.utils.LayoutUtils;
 
 public class CalendarAdapter extends BaseAdapter
@@ -85,7 +85,7 @@ public class CalendarAdapter extends BaseAdapter
             }
             else
             {
-                convertView.setLayoutParams(new GridView.LayoutParams(getCellWidthDP(), getCellHeightDP()));
+                convertView.setLayoutParams(new GridView.LayoutParams(getCellWidthDP(), height));
             }
 
 
@@ -123,7 +123,7 @@ public class CalendarAdapter extends BaseAdapter
 
                 if(schedule != null) {
                     if(schedule.getMonth() == month) {
-                        dayViewHolder.schedule.setText(schedule.getSchedule());
+                        dayViewHolder.schedule.setText(schedule.getMenus());
                     }
                     else {
                         dayViewHolder.schedule.setText("일정이 없네잉");

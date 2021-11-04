@@ -4,11 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
 import kr.hs.dukyoung.DYApp.MainActivity;
 import kr.hs.dukyoung.DYApp.jaehoon.R;
+import kr.hs.dukyoung.DYApp.request.IDoInBackground;
+import kr.hs.dukyoung.DYApp.request.Request;
+import kr.hs.dukyoung.DYApp.request.URLRequest;
 
 public class MainBeginActivity extends AppCompatActivity {
 
@@ -33,6 +37,21 @@ public class MainBeginActivity extends AppCompatActivity {
 
         TextView menuView = (TextView) findViewById(R.id.menuText);
         menuView.setText(grade+"학년"+stuclass+"반 학생");
+
+        Request request = new Request(new IDoInBackground() {
+            @Override
+            public void doInBackground() {
+                try {
+                    URLRequest urlRequest = new URLRequest("http://naver.com");
+                    String html = urlRequest.sendRequest();
+                    Log.i("html", html);
+                }
+                catch(Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        request.execute();
 
         //여기 아래 부분은 엑티비티 넘길 예정
 

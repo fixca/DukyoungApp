@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -16,7 +18,9 @@ import kr.hs.dukyoung.DYApp.announcement.model.AnnouncementManager;
 import kr.hs.dukyoung.DYApp.announcement.view.AnnouncementActivity;
 import kr.hs.dukyoung.DYApp.jaehoon.R;
 import kr.hs.dukyoung.DYApp.main.input.view.MainInputActivity;
+import kr.hs.dukyoung.DYApp.meal.view.SchoolMealActivity;
 import kr.hs.dukyoung.DYApp.request.Request;
+import kr.hs.dukyoung.DYApp.request.URLRequest;
 import kr.hs.dukyoung.DYApp.schedule.view.ScheduleActivity;
 import kr.hs.dukyoung.DYApp.timetable.view.TimeTableActivity;
 
@@ -44,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         activityList.add("schedule");
         activityList.add("timetable");
         activityList.add("maininputactivity");
+        activityList.add("schoolmeal");
 
         ListView listView = findViewById(R.id.main_listview);
         listView.setAdapter(new ArrayAdapter(this, android.R.layout.simple_list_item_1, activityList));
@@ -78,13 +83,22 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case 2:
                     Intent intent2 = new Intent(this, TimeTableActivity.class);
+//                    JSONArray jsonArray = new JSONArray();
+//                    Request request1 = new Request(() -> {
+//                        for(int j = 0; j < 5; j++) {
+//                            URLRequest request2 = new URLRequest()
+//                        }
+//                    });
                     startActivity(intent2);
                     break;
                 case 3:
                     Intent intent3 = new Intent(this, MainInputActivity.class);
                     startActivity(intent3);
                     break;
-
+                case 4:
+                    Intent intent4 = new Intent(this, SchoolMealActivity.class);
+                    startActivity(intent4);
+                    break;
                 default:
                     Toast.makeText(MainActivity.this, "Invalid Action!", Toast.LENGTH_LONG).show();
                     break;
