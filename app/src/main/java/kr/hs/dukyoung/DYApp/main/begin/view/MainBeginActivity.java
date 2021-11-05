@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -13,10 +12,10 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import kr.hs.dukyoung.DYApp.MainActivity;
 import kr.hs.dukyoung.DYApp.jaehoon.R;
+import kr.hs.dukyoung.DYApp.main.begin.adapter.NoticeAdapter;
+import kr.hs.dukyoung.DYApp.main.begin.model.Notice_title;
 import kr.hs.dukyoung.DYApp.meal.view.SchoolMealActivity;
-import kr.hs.dukyoung.DYApp.request.IDoInBackground;
 import kr.hs.dukyoung.DYApp.request.Request;
 import kr.hs.dukyoung.DYApp.request.URLRequest;
 import kr.hs.dukyoung.DYApp.schedule.view.ScheduleActivity;
@@ -77,6 +76,9 @@ public class MainBeginActivity extends AppCompatActivity {
             request.execute();
         });
         timetable_button.setOnClickListener(view -> {
+
+            //T0D0
+            // 여기에 timetable 구현
             Intent intent12 = new Intent(getApplicationContext(), TimeTableActivity.class);
             intent.putExtra("grade",grade);
             intent.putExtra("stuclass",stuclass);
