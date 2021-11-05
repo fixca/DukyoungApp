@@ -45,7 +45,7 @@ public class MainBeginActivity extends AppCompatActivity {
         NoticeList.add(new Notice_title("Tbqkf","2021.10.29"));
         NoticeList.add(new Notice_title("Tmqkf","2021.10.29"));
         NoticeList.add(new Notice_title("tmqkf","2021.10.29"));
-        ArrayAdapter adapter = new ArrayAdapter(this, R.layout.notice_title_listview, NoticeList);
+        NoticeAdapter adapter = new NoticeAdapter(this, R.layout.notice_title_listview, NoticeList);
         Notice_list.setAdapter(adapter);
 
         TextView menuView = (TextView) findViewById(R.id.menuText);
