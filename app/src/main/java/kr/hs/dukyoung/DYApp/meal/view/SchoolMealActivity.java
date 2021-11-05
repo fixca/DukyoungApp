@@ -84,9 +84,9 @@ public class SchoolMealActivity extends AppCompatActivity implements OnClickList
             for(int i = 0; i < jsonArray.length(); i++) {
                 StringBuilder sb = new StringBuilder();
                 JSONObject jsonObject = (JSONObject) jsonArray.get(i);
-                JSONArray array = new JSONArray((String) jsonObject.get("eventName"));
-                for(int j = 0; j < array.length(); j++) {
-                    sb.append(array.get(j) + "\n");
+                String[] strings = ((String) jsonObject.getString("menu")).split("\\|");
+                for(String string : strings) {
+                    sb.append(string + "\n");
                 }
                 ScheduleManager.getInstance().addInstance(Integer.parseInt((String) jsonObject.get("month")), Integer.parseInt((String) jsonObject.get("day")), sb.toString().trim());
             }
@@ -193,7 +193,7 @@ public class SchoolMealActivity extends AppCompatActivity implements OnClickList
             Toast.makeText(this, "급식이 없네잉", Toast.LENGTH_LONG).show();
         }
         else {
-            if(schedule.getMonth() != mThisMonthCalendar.get(Calendar.MONTH) + 1) {
+            if(schedule.getMonth() != mThisMonthCalendar.get(Calendar.MONTH) + 1 || schedule.getMenus().equals("null")) {
                 Toast.makeText(this, "급식이 없네잉", Toast.LENGTH_LONG).show();
             }
             else {

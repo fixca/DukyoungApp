@@ -123,14 +123,20 @@ public class CalendarAdapter extends BaseAdapter
 
                 if(schedule != null) {
                     if(schedule.getMonth() == month) {
-                        dayViewHolder.schedule.setText(schedule.getMenus());
+                        String menu = schedule.getMenus();
+                        if(!(menu.equals("null"))) {
+                            dayViewHolder.schedule.setText(menu);
+                        }
+                        else {
+                            dayViewHolder.schedule.setText("급식이 없네잉");
+                        }
                     }
                     else {
-                        dayViewHolder.schedule.setText("일정이 없네잉");
+                        dayViewHolder.schedule.setText("급식이 없네잉");
                     }
                 }
                 else {
-                    dayViewHolder.schedule.setText("일정이 없네잉");
+                    dayViewHolder.schedule.setText("급식이 없네잉");
                 }
             }
             else
