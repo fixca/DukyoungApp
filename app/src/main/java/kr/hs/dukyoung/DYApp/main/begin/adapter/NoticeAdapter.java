@@ -1,4 +1,4 @@
-package kr.hs.dukyoung.DYApp.main.begin.view;
+package kr.hs.dukyoung.DYApp.main.begin.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import kr.hs.dukyoung.DYApp.jaehoon.R;
+import kr.hs.dukyoung.DYApp.main.begin.model.Notice_title;
 
 public class NoticeAdapter extends ArrayAdapter {
 
@@ -38,11 +39,11 @@ public class NoticeAdapter extends ArrayAdapter {
             TextView Notice_day_view = (TextView) v.findViewById(R.id.Notice_day);
 
             if (Notice_title_view != null) {
-                Notice_title_view.setText(N.title);
+                Notice_title_view.setText(N.getTitle());
             }
 
             if (Notice_day_view != null) {
-                Notice_day_view.setText(N.day);
+                Notice_day_view.setText(N.getDay());
             }
         }
 
