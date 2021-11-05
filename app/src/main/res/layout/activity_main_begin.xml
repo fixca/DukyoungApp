@@ -155,9 +155,10 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <ScrollView
-                        android:layout_width="352dp"
-                        android:layout_height="500dp"></ScrollView>
+                    <ListView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/Notice_list"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

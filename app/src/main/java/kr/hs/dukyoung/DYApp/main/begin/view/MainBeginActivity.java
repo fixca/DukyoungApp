@@ -7,7 +7,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.ArrayAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import kr.hs.dukyoung.DYApp.MainActivity;
 import kr.hs.dukyoung.DYApp.jaehoon.R;
@@ -29,14 +34,19 @@ public class MainBeginActivity extends AppCompatActivity {
         ImageButton schedule_button = findViewById(R.id.schedule_button);
 
         Intent intent = getIntent();
-
-        //String student_Num = intent.getStringExtra("studentNum");
-        //int student = Integer.parseInt(student_Num);
-
         String grade = intent.getStringExtra("gradetext");
         String stuclass = intent.getStringExtra("stuclasstext");
 
-        //int grade = intent.getIntExtra("gratetext",0);
+        ListView Notice_list = (ListView)findViewById(R.id.Notice_list);
+        ArrayList<Notice_title> NoticeList = new ArrayList<>();
+        NoticeList.add(new Notice_title("Tlqkf","2021.10.29"));
+        NoticeList.add(new Notice_title("tlqkf","2021.10.29"));
+        NoticeList.add(new Notice_title("tbqkf","2021.10.29"));
+        NoticeList.add(new Notice_title("Tbqkf","2021.10.29"));
+        NoticeList.add(new Notice_title("Tmqkf","2021.10.29"));
+        NoticeList.add(new Notice_title("tmqkf","2021.10.29"));
+        ArrayAdapter adapter = new ArrayAdapter(this, R.layout.notice_title_listview, NoticeList);
+        Notice_list.setAdapter(adapter);
 
         TextView menuView = (TextView) findViewById(R.id.menuText);
         menuView.setText(grade+"학년 "+stuclass+"반 학생");
@@ -54,15 +64,6 @@ public class MainBeginActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-        schedule_button.setOnClickListener(view ->{
-            Intent intent12 = new Intent(MainBeginActivity.this, CalendarAdapter.DayViewHolde.class);
-            startActivity(intent12);
-        });
-
-
-
         request.execute();
 
         //여기 아래 부분은 엑티비티 넘길 예정
