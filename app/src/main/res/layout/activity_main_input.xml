@@ -18,9 +18,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center|bottom">
 
 
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/student_image"/>
         </LinearLayout>
 
         <LinearLayout
@@ -97,12 +103,14 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/button"
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="70dp"
+                        android:layout_height="36dp"
                         android:layout_gravity="top|center"
-                        android:text="입력" />
+                        android:src="@drawable/numbercheck_button"
+                        android:background="@android:color/transparent"
+                        />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

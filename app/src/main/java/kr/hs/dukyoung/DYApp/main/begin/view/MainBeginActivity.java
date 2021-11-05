@@ -43,6 +43,8 @@ public class MainBeginActivity extends AppCompatActivity {
 
         ListView Notice_list = (ListView)findViewById(R.id.Notice_list);
         ArrayList<Notice_title> NoticeList = new ArrayList<>();
+
+        //공지사항 api 받아서 넣으면 됨
         NoticeList.add(new Notice_title("Tlqkf","2021.10.29"));
         NoticeList.add(new Notice_title("tlqkf","2021.10.29"));
         NoticeList.add(new Notice_title("tbqkf","2021.10.29"));
