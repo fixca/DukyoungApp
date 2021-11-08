@@ -20,6 +20,9 @@ public class Time {
     }
 
     public String getTitle() {
+        if(this.title == null || this.title.equals("")) {
+            return "수업이 없네잉";
+        }
         return title;
     }
 

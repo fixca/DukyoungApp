@@ -76,13 +76,21 @@ public class MainBeginActivity extends AppCompatActivity {
             request.execute();
         });
         timetable_button.setOnClickListener(view -> {
-
-            //T0D0
-            // 여기에 timetable 구현
             Intent intent12 = new Intent(getApplicationContext(), TimeTableActivity.class);
-            intent.putExtra("grade",grade);
-            intent.putExtra("stuclass",stuclass);
-            startActivity(intent12);
+            Request request = new Request(() -> {
+               try {
+//                   URLRequest urlRequest = new URLRequest("http://117.123.207.101:8080/api/detailSchedule?grade=" + grade + "&classvalue=" + stuclass);
+//                   String jsonString = urlRequest.sendRequest();
+                   String jsonString = "[{\"id\":8800,\"days\":\"0\",\"grade\":\"2\",\"classValue\":\"9\",\"classname\":\"소프트웨어과\",\"subject\":\"인공지능과 피지컬컴퓨팅|한국사|물리학Ⅰ|컴퓨터 시스템 일반|수학Ⅱ|자료 구조|프로그래밍|\"},{\"id\":8801,\"days\":\"1\",\"grade\":\"2\",\"classValue\":\"9\",\"classname\":\"소프트웨어과\",\"subject\":\"문학|수학Ⅱ|자료 구조|진로활동|체육|컴퓨터 시스템 일반|컴퓨터 시스템 일반|\"},{\"id\":8802,\"days\":\"2\",\"grade\":\"2\",\"classValue\":\"9\",\"classname\":\"소프트웨어과\",\"subject\":\"한문Ⅰ|프로그래밍(PYTHON)|프로그래밍(PYTHON)|한국사|일본어Ⅰ|프로그래밍|한문Ⅰ|\"},{\"id\":8803,\"days\":\"3\",\"grade\":\"2\",\"classValue\":\"9\",\"classname\":\"소프트웨어과\",\"subject\":\"물리학Ⅰ|일본어Ⅰ|문학|한국사|프로그래밍|영어Ⅰ|영어Ⅰ|\"},{\"id\":8804,\"days\":\"4\",\"grade\":\"2\",\"classValue\":\"9\",\"classname\":\"소프트웨어과\",\"subject\":\"동아리활동|동아리활동|동아리활동|동아리활동|동아리활동|동아리활동|\"}]";
+                   intent12.putExtra("jsonString", jsonString);
+                   startActivity(intent12);
+               }
+               catch(Exception e) {
+                   e.printStackTrace();
+                   Toast.makeText(MainBeginActivity.this, "서버 요청중 에러가 발생했습니다!\n인터넷 연결 상태를 확인해주시고 다시 실행해주세요!", Toast.LENGTH_LONG).show();
+               }
+            });
+            request.execute();
         });
         schedule_button.setOnClickListener(view -> {
             Intent intent13 = new Intent(MainBeginActivity.this, ScheduleActivity.class);

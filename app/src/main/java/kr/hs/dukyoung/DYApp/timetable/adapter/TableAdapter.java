@@ -64,7 +64,10 @@ public class TableAdapter extends BaseAdapter {
             }
 
             Time time = TimeManager.getInstance().getTime();
-            textView.setText(time.getTitle());
+            if(time != null) {
+                textView.setText(time.getTitle());
+            }
+
         }
         return convertView;
     }
