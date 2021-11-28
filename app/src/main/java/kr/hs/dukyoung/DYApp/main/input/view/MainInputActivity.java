@@ -25,7 +25,7 @@ public class MainInputActivity extends AppCompatActivity {
         button.setOnClickListener(view -> {
             String gradetext = grade.getText().toString();
             String stuclasstext = stuclass.getText().toString();
-            Toast.makeText(getApplicationContext(),"어서오세요",Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(),"어서오세요",Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getApplicationContext(), MainBeginActivity.class);
             intent.putExtra("gradetext",gradetext);
             intent.putExtra("stuclasstext",stuclasstext);
